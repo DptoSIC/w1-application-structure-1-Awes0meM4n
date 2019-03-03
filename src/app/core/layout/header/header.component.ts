@@ -8,7 +8,6 @@ import { environment } from '../../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
   title = environment.title;
-  logo = environment.logo;
 
   constructor() { }
 

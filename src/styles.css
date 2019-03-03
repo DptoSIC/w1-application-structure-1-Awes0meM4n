@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.icon {
+  -moz-transition: all 300ms ease-in-out 0s;
+  -webkit-transition: all 300ms ease-in-out 0s;
+  -o-transition: all 300ms ease-in-out 0s;
+  transition: all 300ms ease-in-out 0s;
+  border-radius: 50%;
+  margin: 0 0.2rem;
+  opacity: 0.8;
+  height: 2rem;
+}
+
+.icon:hover {
+  border-radius: 0;
+  opacity: 1;
+}

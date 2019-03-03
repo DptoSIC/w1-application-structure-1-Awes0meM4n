@@ -3,7 +3,22 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  title: 'Gestión de Proyectos',
+  logo: 'LanyuCirculoRelleno.svg',
+  marca: 'Lanyu EStudio',
+  webMarca: 'https://lanyu-estudio.itch.io/',
+  twitter: 'https://twitter.com/LanyuEstudio',
+  facebook: 'https://www.facebook.com/LanyuEStudio/',
+  github: 'https://github.com/LanyuEStudio',
+  production: false,
+
+  /* dummyData */
+  projects: [
+    { id: 0, name: 'Learn Angular' },
+    { id: 1, name: 'Develop My Dream app' },
+    { id: 2, name: 'Travel around the world' },
+    { id: 3, name: 'Clean my room' }
+  ]
 };
 
 /*

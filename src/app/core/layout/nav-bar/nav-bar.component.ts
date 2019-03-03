@@ -8,6 +8,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class NavBarComponent implements OnInit {
   marca = environment.marca;
+  logo = environment.logo;
 
   constructor() { }
 
