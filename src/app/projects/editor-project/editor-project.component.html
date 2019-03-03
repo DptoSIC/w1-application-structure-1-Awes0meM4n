@@ -1,0 +1,9 @@
+<p>
+  <span [class]="claseNombre">Editar proyecto</span>
+</p>
+<section *ngIf="proyecto;else noExiste">
+  <app-form-project></app-form-project>
+</section>
+<ng-template #noExiste>
+  <div>No existe el proyecto <a routerLink="../new" type="button" class="btn btn-outline-primary">Crear uno</a></div>
+</ng-template>

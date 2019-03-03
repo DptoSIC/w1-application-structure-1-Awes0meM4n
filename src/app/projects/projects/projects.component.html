@@ -1,0 +1,7 @@
+<h3>Escoge un proyecto:</h3>
+<ul>
+  <li *ngFor="let proyecto of proyectos" [value]="proyecto.name">
+    <a routerLink="{{ proyecto.id }}">{{ proyecto.name }}</a>
+  </li>
+</ul>
+
