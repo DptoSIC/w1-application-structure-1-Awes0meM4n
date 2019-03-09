@@ -32,3 +32,13 @@ La duda que tengo es más bien de la semana 1, pero se me olvidó hacerla:
 ¿Hace falta tener el RouterModule para importar componentes de otros módulos?
 
 Por otra parte, he instalado el plugin [Angular Extension Pack](https://marketplace.visualstudio.com/items?itemName=loiane.angular-extension-pack) y ahora me ofrece asistente de contenido, aunque sigue sin resaltarme directivas como `routerLink`.
+
+## Semana 3
+Subido todo con el commit "Semana 3"
+
+### Dudas
+He probado a declarar como dependencia la interface directamente en vez del servicio abstracto pero no me lo admitia. Lo intenté porque en Java lo normal es usar la interface **¿En Angular las dependencias sólo pueden ser servicios?**
+
+También me ha surgido la duda de **¿Por qué en el app-routing no se dirige a NotFoundComponent directamente cuanto no coincida ninguna ruta `'**'` (eliminar ruta not-found)? ¿Se hace sólo para establecer la nueva ruta en el navegador?**
+
+Por otra parte, esto no es una duda, he detectado que el vídeo 5.1 no se puede marcar porque no aparece la casilla.
