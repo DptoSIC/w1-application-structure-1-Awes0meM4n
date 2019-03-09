@@ -13,3 +13,10 @@
   border-radius: 0;
   opacity: 1;
 }
+
+/* Elimina las flechas en input tipo number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

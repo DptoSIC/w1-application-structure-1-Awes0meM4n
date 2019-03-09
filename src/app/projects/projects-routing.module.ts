@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectsComponent } from './projects/projects.component';
-import { EditorProjectComponent } from './editor-project/editor-project.component';
-import { NewProjectComponent } from './new-project/new-project.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { EditorProjectFormComponent } from './editor-project-form/editor-project-form.component';
+import { NewProjectFormComponent } from './new-project-form/new-project-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProjectsComponent
+    component: DashboardComponent
   },
   {
     path: 'new',
-    component: NewProjectComponent
+    // component: NewProjectComponent => Este componente ya no es necesario
+    component: NewProjectFormComponent
   },
   {
     path: ':id',
-    component: EditorProjectComponent
+    // component: EditorProjectComponent => Este componente ya no es necesario
+    component: EditorProjectFormComponent
   }
 ];
 

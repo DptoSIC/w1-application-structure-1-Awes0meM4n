@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8"><app-filter-projects-form (filtrar)="filtrarProyectos($event)"></app-filter-projects-form>
+    </div>
+    <div class="col-12 col-lg-4">o crea un <a class="btn btn-primary" routerLink="new">Proyecto Nuevo</a></div>
+  </div>
+</div>
+<app-projects-list [proyectos]="listaFiltrada"></app-projects-list>
+<pre><code class="text-danger">{{ listaFiltrada | json }}</code></pre>

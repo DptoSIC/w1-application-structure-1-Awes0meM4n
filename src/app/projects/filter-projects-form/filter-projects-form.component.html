@@ -1,0 +1,9 @@
+<form>
+  <div class="form-group row">
+    <label for="filtro" class="col-auto col-form-label">Introduce filtro</label>
+    <div class="col">
+      <input [(ngModel)]="filtro" (input)="filtrar.emit(filtro)" [ngModelOptions]="{standalone: true}"
+        type="text" class="form-control" id="filtro" placeholder='Texto en nombre (o precede con "#" para buscar por id)'>
+    </div>
+  </div>
+</form>

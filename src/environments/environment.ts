@@ -11,6 +11,7 @@ export const environment = {
   facebook: 'https://www.facebook.com/LanyuEStudio/',
   github: 'https://github.com/LanyuEStudio',
   production: false,
+  projectsService: 'miProjectsService',
 
   /* dummyData */
   projects: [
