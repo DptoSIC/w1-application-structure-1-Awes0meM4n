@@ -1,16 +1,19 @@
 <app-form-project [proyecto]="proyecto"></app-form-project>
 <a class="btn btn-primary mr-3" type="button" (click)="actualizar()" tabindex="3">Guardar</a><a class="btn btn-danger" type="button" (click)="borrar()" tabindex="4">Borrar</a>
 <div class="mt-3">
-  <div class="alert alert-success {{ mostrar(guardadoCorrecto) }}" role="alert">
-    Se ha guardado {{ nombreProyecto() }} con éxito
-  </div>
-  <div class="alert alert-danger {{ mostrar(guardadoIncorrecto) }}" role="alert">
-    Error al intentar guardar {{ nombreProyecto() }}
-  </div>
-  <div class="alert alert-success {{ mostrar(borradoCorrecto) }}" role="alert">
-    Se ha borrado {{ nombreProyecto() }} con éxito
-  </div>
-  <div class="alert alert-danger {{ mostrar(borradoIncorrecto) }}" role="alert">
-    Error de borrado: No se encuentra {{ nombreProyecto() }}
-  </div>
+  <section *ngIf="mensaje">
+    <div class="alert alert-{{ mensaje.clase }}" role="alert">
+      {{ mensaje.texto }}
+    </div>
+  </section>
+  <!-- CON IF ELSE <section *ngIf="!mensaje; else mensajeAlert">
+    <div class="alert" role="alert">
+      Sin mensajes pendientes
+    </div>
+  </section>
+  <ng-template #mensajeAlert>
+    <div class="{{ mensaje.clase }}" role="alert">
+      texto {{ mensaje.texto }}
+    </div>
+</ng-template>-->
 </div>

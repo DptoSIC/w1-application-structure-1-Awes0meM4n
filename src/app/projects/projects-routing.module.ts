@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditorProjectFormComponent } from './editor-project-form/editor-project-form.component';
 import { NewProjectFormComponent } from './new-project-form/new-project-form.component';
 

@@ -10,12 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditorProjectFormComponent implements OnInit {
 
-  guardadoCorrecto = false;
-  guardadoIncorrecto = false;
-  borradoCorrecto = false;
-  borradoIncorrecto = false;
   proyecto: Project;
   proyectoEnServicio: Project;
+  mensaje: Mensaje;
 
   constructor(activatedRoute: ActivatedRoute, private projectsService: ProjectsService) {
     this.proyectoEnServicio = projectsService.verProyecto(parseInt(activatedRoute.snapshot.params.id, 10));
@@ -27,18 +24,25 @@ export class EditorProjectFormComponent implements OnInit {
   }
 
   actualizar() {
-    console.log(this.proyecto);
-    this.guardadoCorrecto = this.projectsService.actualizarProyecto(this.proyecto, this.proyectoEnServicio);
-    this.guardadoIncorrecto = !this.guardadoCorrecto;
-    if (this.guardadoCorrecto) {
+    const guardadoCorrecto = this.projectsService.actualizarProyecto(this.proyecto, this.proyectoEnServicio);
+    let textoMensaje: string;
+    if (guardadoCorrecto) {
       this.proyectoEnServicio = this.proyecto;
       this.proyecto = JSON.parse(JSON.stringify(this.proyectoEnServicio));
+      textoMensaje = 'Se ha guardado ' + this.nombreProyecto() + ' con éxito';
+    } else {
+      textoMensaje = 'Error al intentar guardar ' + this.nombreProyecto();
     }
+
+    this.mensaje = this.crearMensaje(guardadoCorrecto, textoMensaje);
   }
 
   borrar() {
-    this.borradoCorrecto = this.projectsService.borrarProyecto(this.proyecto);
-    this.borradoIncorrecto = !this.borradoCorrecto;
+    const borradoCorrecto = this.projectsService.borrarProyecto(this.proyecto);
+    const textoMensaje = borradoCorrecto ?
+      'Se ha borrado ' + this.nombreProyecto() + ' con éxito' :
+      'Error de borrado: No se encuentra ' + this.nombreProyecto();
+    this.mensaje = this.crearMensaje(borradoCorrecto, textoMensaje);
   }
 
   nombreProyecto = () => this.proyecto.name + ' (' + this.proyecto.id + ')';
@@ -46,4 +50,16 @@ export class EditorProjectFormComponent implements OnInit {
   mostrar(visible: boolean) {
     return visible ? '' : 'd-none';
   }
+
+  crearMensaje(exito: boolean, textoMensaje: string) {
+    return {
+      texto: textoMensaje,
+      clase: exito ? 'success' : 'danger'
+    };
+  }
+}
+
+interface Mensaje {
+  texto: string;
+  clase: string;
 }
