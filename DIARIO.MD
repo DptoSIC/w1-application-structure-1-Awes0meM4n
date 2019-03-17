@@ -37,8 +37,18 @@ Por otra parte, he instalado el plugin [Angular Extension Pack](https://marketpl
 Subido todo con el commit "Semana 3"
 
 ### Dudas
-He probado a declarar como dependencia la interface directamente en vez del servicio abstracto pero no me lo admitia. Lo intenté porque en Java lo normal es usar la interface **¿En Angular las dependencias sólo pueden ser servicios?**
+He probado a declarar como dependencia la interface directamente en vez del servicio abstracto pero no me lo admitia. Lo intenté porque en Java lo normal es usar la interface **¿En Angular las dependencias sólo pueden ser servicios?** RESPUESTA: [La inyeccion de dependencias en Agnular se basa en clases concretas, no interfaces](https://cursos.trainingit.es/mod/forum/discuss.php?d=760#p2174).
 
-También me ha surgido la duda de **¿Por qué en el app-routing no se dirige a NotFoundComponent directamente cuanto no coincida ninguna ruta `'**'` (eliminar ruta not-found)? ¿Se hace sólo para establecer la nueva ruta en el navegador?**
+También me ha surgido la duda de **¿Por qué en el app-routing no se dirige a NotFoundComponent directamente cuanto no coincida ninguna ruta `'**'` (eliminar ruta not-found)? ¿Se hace sólo para establecer la nueva ruta en el navegador?** RESPUESTA: [así también se redirigen desde otros componentes](https://cursos.trainingit.es/mod/forum/discuss.php?d=760#p2174) que están dentro de otros para fallos más finos.
 
 Por otra parte, esto no es una duda, he detectado que el vídeo 5.1 no se puede marcar porque no aparece la casilla.
+
+## Semana 4
+Subido todo con el commit "Semana 4"
+
+### Dudas
+Entiendo que con la API proporcionada no se podían hacer actualizaciones de un sólo proyecto pues no tenía controlador por ids (a mi me resolvía con un 404). Lo mismo pasa con el DELETE, se borraban todos los proyectos, no se podía elegir un id de recurso aislado. Si estoy equivocado por favor indíquemelo.
+
+He intentado hacer un Custom Pipe para formatear un Observable<Project> | async | name, pero no me ha salido. He seguido las instrucciones de [la documentación de Angular](https://angular.io/guide/pipes#custom-pipes) pero no he tenido éxito. Me salía _ERROR TS2304: Cannot find name 'Mi-Pipe'_. Si no está en el próximo contenido podría indicarme una guía completa (me cree el Pipe con `@Pipe`, implementé la interfaz con `transform` y lo añadí a `providers` de `app.module.ts`)
+
+Me ha costado mantener las interfaces como las tenía inicialmente sin Observables. Al final no me quedó más remedio que hacer un `subscribe` en constructor o usar el pipe `async` ¿Es la forma correcta?

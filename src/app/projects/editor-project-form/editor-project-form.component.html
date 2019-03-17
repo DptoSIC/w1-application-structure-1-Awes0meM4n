@@ -2,8 +2,9 @@
 <a class="btn btn-primary mr-3" type="button" (click)="actualizar()" tabindex="3">Guardar</a><a class="btn btn-danger" type="button" (click)="borrar()" tabindex="4">Borrar</a>
 <div class="mt-3">
   <section *ngIf="mensaje">
-    <div class="alert alert-{{ mensaje.clase }}" role="alert">
+    <div class="alert alert-{{ mensaje.exito ? 'success' : 'danger' }}" role="alert">
       {{ mensaje.texto }}
+      <!--{{ mensaje$ | async | json }}-->
     </div>
   </section>
   <!-- CON IF ELSE <section *ngIf="!mensaje; else mensajeAlert">

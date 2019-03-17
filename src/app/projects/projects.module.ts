@@ -1,7 +1,9 @@
+import { NotificacionesService } from '../notificaciones/notificaciones.service';
 import { MiProjectsService } from './mi-projects-service.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects/projects.component';
@@ -36,13 +38,18 @@ const cultureFactory = (projectsService: ProjectsService) => {
     EditorProjectFormComponent,
     NewProjectFormComponent
   ],
-  imports: [CommonModule, ProjectsRoutingModule, FormsModule],
+  imports: [CommonModule, ProjectsRoutingModule, FormsModule, HttpClientModule],
   providers: [
     {
       provide: ProjectsService,
-      //  useClass: MiProjectsService => Pasamos a contruirlo usando el environment
-      useFactory: cultureFactory
+        useClass: MiProjectsService// => Pasamos a contruirlo usando el environment
+      //useFactory: cultureFactory
       // , deps: [ProjectsService] // ProjectsService no depende de nada en su contruccion
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NotificacionesService,
+      multi: true
     }
   ]
 })

@@ -2,29 +2,61 @@ import { ProjectsInterface } from './projects-interface';
 import { Injectable } from '@angular/core';
 import { Project } from './projects/model/project.model';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap, share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MiProjectsService implements ProjectsInterface {
 
-  listaProyectos = environment.projects;
+  listaProyectos: Project[];
+  public listaObservable$: Observable<Project[]>;
+  listaFiltrada$: Observable<Project[]>;
+  urlApi = environment.urlAPI;
 
-  constructor() { }
+  constructor(private httpClient?: HttpClient) {
+    // Para carga inicial de proyectos porque se borran si no hay actividad en 30 minutos
+    //environment.projects.forEach(p => httpClient.post(environment.urlAPI, p).subscribe());
+    this.listaProyectos = [];
+    this.listaObservable$ = httpClient.get<Project[]>(this.urlApi).pipe(
+      share(),
+      tap(proyectos => this.vaciaYRellenaCon(proyectos)));
+
+    //httpClient.delete(environment.urlAPI).subscribe();
+  }
+
+  private vaciaYRellenaCon(proyectos: Project[]){
+    this.listaProyectos.splice(0);
+    proyectos.forEach(p => this.listaProyectos.push(p));
+  }
 
   public filtrarProyectos(filtro: string) {
+    if (filtro.startsWith('#')) {
+      return this.listaProyectos.filter(p => p.id === parseInt(filtro.slice(1), 10));
+    } else {
+      return this.listaProyectos.filter(p => p.name.indexOf(filtro) > -1);
+    }
+
+    /* Código Semana 3
     if (filtro.startsWith('#')) {
       const resultado = this.listaProyectos.filter(p => p.id === parseInt(filtro.slice(1), 10));
       return resultado.length > 0 ? resultado[0] : null;
     } else {
       return this.listaProyectos.filter(p => p.name.indexOf(filtro) > -1);
-    }
+    }*/
   }
 
   public guardarProyecto(proyecto: Project) {
+    /* Código Semana 3
     const numProyectos = this.listaProyectos.length;
     this.listaProyectos.push(proyecto);
-    return this.listaProyectos.length > numProyectos;
+    return this.listaProyectos.length > numProyectos;*/
+
+    this.httpClient.post(this.urlApi, proyecto).subscribe();
+
+    return true;
   }
 
   public verProyecto(id: number) {
@@ -32,7 +64,7 @@ export class MiProjectsService implements ProjectsInterface {
     if (!(proyecto instanceof Array)) {
       return proyecto;
     } else {
-      return null;
+      return proyecto[0];
     }
   }
 

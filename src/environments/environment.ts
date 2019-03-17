@@ -13,6 +13,8 @@ export const environment = {
   production: false,
   projectsService: 'miProjectsService',
 
+  urlAPI: 'https://api-base.herokuapp.com/api/pub/projects',
+
   /* dummyData */
   projects: [
     { id: 0, name: 'Learn Angular' },

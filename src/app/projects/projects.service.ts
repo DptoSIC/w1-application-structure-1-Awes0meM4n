@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Project } from './projects/model/project.model';
 
@@ -13,7 +14,7 @@ export class ProjectsService {
   public borrarProyecto: (proyecto: Project) => boolean;
   public actualizarProyecto: (proyecto: Project, proyectoAntiguo?: Project) => boolean;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   nuevoProyecto: () => Project;
 }
