@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../projects/model/project.model';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { ResultadoFormProject } from '../form-project/resultado-form-project';
 
 @Component({
   selector: 'app-editor-project-form',
@@ -17,6 +18,7 @@ export class EditorProjectFormComponent implements OnInit {
   proyectoEnServicio: Project;
   mensaje: Mensaje;
   mensaje$: Observable<Mensaje>;
+  formularioInvalido: boolean;
 
   constructor(activatedRoute: ActivatedRoute,
               private projectsService: ProjectsService,
@@ -29,6 +31,12 @@ export class EditorProjectFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  // Semana 5: Tengo que refrescar el proyecto cuando cambie el formProyecto
+  refrescarProyecto(proyecto: ResultadoFormProject) {
+    this.proyecto = proyecto.proyecto;
+    this.formularioInvalido = !proyecto.valido;
   }
 
   actualizar() {

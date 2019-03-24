@@ -1,13 +1,15 @@
-<form>
+  <form [formGroup]="formProyecto" (input)="leerProyecto.emit(informeFormulario())">
     <div class="form-group">
       <label for="id">Id</label>
-      <input [(ngModel)]="proyecto.id" [ngModelOptions]="{standalone: true}"
+      <input formControlName="id"
         type="number" min="0" class="form-control" id="id" placeholder="Establece un Id" tabindex="1">
+      <span>{{ getError('id') }}</span>
     </div>
     <div class="form-group">
       <label for="nombre">Nombre</label>
-      <input [(ngModel)]="proyecto.name" [ngModelOptions]="{standalone: true}"
+      <input formControlName="name"
         type="text" class="form-control" id="nombre" placeholder="Ponle un nombre" tabindex="2">
+        <span>{{ getError('name') }}</span>
     </div>
   </form>
-  <pre><code>{{ proyecto | json }}</code></pre>
+  <pre><code>{{ formProyecto.value | json }}</code></pre>

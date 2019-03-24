@@ -1,5 +1,11 @@
 <div class="mt-5 text-center mb-3">
+    <section *ngIf="mensaje">
+        <div class="alert alert-warning" role="alert">
+          {{ mensaje.texto }}
+        </div>
+      </section>
   <p>
-    Síguenos en <app-social></app-social> <i class="far fa-copyright p-1"></i> <a href="{{ webMarca }}">{{ marca }}</a> <app-tag-value></app-tag-value>
+    Síguenos en <app-social></app-social> <i class="far fa-copyright p-1"></i> <a href="{{ webMarca }}">{{ marca }}</a>
   </p>
+  <app-tag-value></app-tag-value>
 </div>

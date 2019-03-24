@@ -1,5 +1,6 @@
-<app-form-project [proyecto]="proyecto"></app-form-project>
-<a class="btn btn-primary mr-3" type="button" (click)="actualizar()" tabindex="3">Guardar</a><a class="btn btn-danger" type="button" (click)="borrar()" tabindex="4">Borrar</a>
+<app-form-project [proyecto]="proyecto" (leerProyecto)="refrescarProyecto($event)"></app-form-project>
+<button class="btn btn-primary mr-3" type="button" [disabled]="formularioInvalido" (click)="actualizar()" tabindex="3">Guardar</button>
+<button class="btn btn-danger" type="button" [disabled]="formularioInvalido" (click)="borrar()" tabindex="4">Borrar</button>
 <div class="mt-3">
   <section *ngIf="mensaje">
     <div class="alert alert-{{ mensaje.exito ? 'success' : 'danger' }}" role="alert">

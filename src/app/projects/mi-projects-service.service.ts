@@ -27,9 +27,9 @@ export class MiProjectsService implements ProjectsInterface {
     //httpClient.delete(environment.urlAPI).subscribe();
   }
 
-  private vaciaYRellenaCon(proyectos: Project[]){
+  private vaciaYRellenaCon(proyectos: Project[]) {
     this.listaProyectos.splice(0);
-    proyectos.forEach(p => this.listaProyectos.push(p));
+    this.listaProyectos.push(...proyectos);
   }
 
   public filtrarProyectos(filtro: string) {
@@ -95,7 +95,7 @@ export class MiProjectsService implements ProjectsInterface {
 
   // Pertenece a ProjectsService, no a ProjectsInterface
   nuevoProyecto() {
-    return { id: this.generarId(), name: ''};
+    return { id: this.generarId(), name: null};
   }
 
   // Sirve para generar los ids para nuevos proyectos
@@ -105,14 +105,14 @@ export class MiProjectsService implements ProjectsInterface {
 
   listaIds() {
     const ids = [];
-    for (let p of this.listaProyectos) {
+    for (const p of this.listaProyectos) {
       ids.push(p.id);
     }
     return ids;
   }
 
   // Validar que no hay conflicto de ids
-  nuevoIdExiste(proyecto: Project) {
+  nuevoIdExiste(proyecto: Project | { id: number }) {
     return this.listaIds().indexOf(proyecto.id) > -1;
   }
 

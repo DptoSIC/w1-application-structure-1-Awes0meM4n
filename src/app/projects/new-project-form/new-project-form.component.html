@@ -1,5 +1,2 @@
-<p>
-  editor-project-form works!
-</p>
-<app-form-project [proyecto]="proyecto"></app-form-project>
-<a class="btn btn-primary" type="button" (click)="crear()" tabindex="3">Crear</a>
+<app-form-project [proyecto]="proyecto" (leerProyecto)="refrescarProyecto($event)"></app-form-project>
+<button class="btn btn-primary" type="button" (click)="crear()" [disabled]="formularioInvalido" tabindex="3">Crear</button>
